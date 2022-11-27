@@ -6,4 +6,7 @@ package pl.sda.hibernate;
  * @created 27.11.2022
  */
 public class Main {
+    public static void main(String[] args) {
+        HibernateUtil.INSTANCE.getSessionFactory().openSession();
+    }
 }
