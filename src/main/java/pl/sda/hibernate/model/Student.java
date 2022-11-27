@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Formula;
+
+import java.util.Set;
 
 /**
  * @author Paweł Recław, AmeN
@@ -31,7 +34,12 @@ public class Student {
     private int rokRozpoczeciaStudiow;
 
     // nie chcemy, aby to była kolumna
-    private double sredniaOcen;
+    @Formula("(SELECT AVG(o.wartosc) FROM Ocena o WHERE o.uczen_id=id)")
+    private Double sredniaOcen;
+
+    // RELACJE
+    @OneToMany(mappedBy = "uczen")
+    private Set<Ocena> oceny;
 }
 
 

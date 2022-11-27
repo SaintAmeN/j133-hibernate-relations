@@ -30,6 +30,10 @@ public class Ocena {
     // INSERT INTO OCENA VALUES(1, 4.5, now())
     @CreationTimestamp // odpowiednik SQL funkcja: now()
     private LocalDateTime dataCzasDodania;
+
+    // RELACJE
+    @ManyToOne
+    private Student uczen; //  kolumna student_id
 }
 
 
