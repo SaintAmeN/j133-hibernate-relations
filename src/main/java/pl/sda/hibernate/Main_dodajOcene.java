@@ -3,6 +3,7 @@ package pl.sda.hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import pl.sda.hibernate.model.Ocena;
+import pl.sda.hibernate.model.Przedmiot;
 import pl.sda.hibernate.model.Student;
 
 import java.util.Scanner;
@@ -35,10 +36,15 @@ public class Main_dodajOcene {
                 String dodawanaOcena = scanner.nextLine();
                 double wartoscOceny = Double.parseDouble(dodawanaOcena);
 
+                System.out.println("Podaj przedmiot:");
+                String przedmiotOceny = scanner.nextLine();
+                Przedmiot przedmiot = Przedmiot.valueOf(przedmiotOceny);
+
                 //  Stwórz obiekt oceny i przypisz do oceny studenta.
                 Ocena nowaOcena = Ocena.builder()
                         .uczen(szukanyStudent)
                         .wartosc(wartoscOceny)
+                        .przedmiot(przedmiot)
                         .build();
 
                 //  Zapisz ocene.
